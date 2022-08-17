@@ -38,6 +38,8 @@ dependencies:
   firebase_auth: ^3.6.2
   hive:
   hive_flutter: 
+  responsive_framework: ^0.2.0
+  sizer: ^2.0.15
 
 dev_dependencies:
   flutter_test:

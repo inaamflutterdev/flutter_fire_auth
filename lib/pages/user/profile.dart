@@ -17,12 +17,13 @@ class _ProfileState extends State<Profile> {
   verifyEmail() async {
     if (user != null && !user!.emailVerified) {
       await user!.sendEmailVerification();
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           backgroundColor: Colors.orange,
           content: Text(
             "Verification email has been sent. Check inbox or Spam box",
-            style: const TextStyle(fontSize: 18.0, color: Colors.black),
+            style: TextStyle(fontSize: 18.0, color: Colors.black),
           ),
         ),
       );
@@ -40,7 +41,7 @@ class _ProfileState extends State<Profile> {
           children: [
             Text(
               'User ID: $uid',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 17.0,
               ),
             ),
@@ -48,10 +49,10 @@ class _ProfileState extends State<Profile> {
               children: [
                 Text(
                   'Email: $email',
-                  style: TextStyle(fontSize: 17.0),
+                  style: const TextStyle(fontSize: 17.0),
                 ),
                 user!.emailVerified
-                    ? Text(
+                    ? const Text(
                         'Verified',
                         style: TextStyle(
                             fontSize: 17.0, color: Colors.greenAccent),
@@ -68,7 +69,7 @@ class _ProfileState extends State<Profile> {
             ),
             Text(
               'Created: $creationTime',
-              style: TextStyle(fontSize: 15.0),
+              style: const TextStyle(fontSize: 15.0),
             ),
           ],
         ),

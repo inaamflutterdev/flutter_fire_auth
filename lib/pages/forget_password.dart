@@ -26,25 +26,26 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   resetPassword() async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-      print("Password reset email has been sent");
+      // print("Password reset email has been sent");
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           backgroundColor: Colors.orange,
           content: Text(
             "Password reset email has been sent. Check inbox or Spam box",
-            style: const TextStyle(fontSize: 18.0, color: Colors.black),
+            style: TextStyle(fontSize: 18.0, color: Colors.black),
           ),
         ),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print("No user found for that Email");
+        // print("No user found for that Email");
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: Colors.orange,
             content: Text(
               "No user found for that Email",
-              style: const TextStyle(fontSize: 18.0, color: Colors.black),
+              style: TextStyle(fontSize: 18.0, color: Colors.black),
             ),
           ),
         );
@@ -100,7 +101,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           },
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         height: 50,
                         width: 300,
                         child: Row(

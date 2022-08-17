@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_auth/pages/login.dart';
-import 'package:flutter_firebase_auth/pages/user/user_main.dart';
+
 import 'package:proste_bezier_curve/proste_bezier_curve.dart';
 
 class Signup extends StatefulWidget {
@@ -33,57 +33,56 @@ class _SignupState extends State<Signup> {
   registration() async {
     if (password == confirmPassword) {
       try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
-        print(userCredential);
+        // print(userCredential);
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: Colors.redAccent,
             content: Text(
               "Registered Successfully. Please Login",
-              style: const TextStyle(fontSize: 20.0),
+              style: TextStyle(fontSize: 20.0),
             ),
           ),
         );
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Login(),
+            builder: (context) => const Login(),
           ),
         );
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
-          print("Password provided is too Weak");
+          // print("Password provided is too Weak");
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               backgroundColor: Colors.orangeAccent,
               content: Text(
                 "Password provided is too Weak",
-                style: const TextStyle(fontSize: 18.0, color: Colors.black),
+                style: TextStyle(fontSize: 18.0, color: Colors.black),
               ),
             ),
           );
         } else if (e.code == 'email-already-in-use') {
-          print("Account already exists");
+          // print("Account already exists");
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               backgroundColor: Colors.orangeAccent,
               content: Text(
                 "Account already exists",
-                style: const TextStyle(fontSize: 18.0, color: Colors.black),
+                style: TextStyle(fontSize: 18.0, color: Colors.black),
               ),
             ),
           );
         }
       }
     } else {
-      print("Password and Confirm Password not match");
+      // print("Password and Confirm Password not match");
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           backgroundColor: Colors.orangeAccent,
           content: Text(
             "Password and Confirm Password not match",
-            style: const TextStyle(fontSize: 16.0, color: Colors.black),
+            style: TextStyle(fontSize: 16.0, color: Colors.black),
           ),
         ),
       );
@@ -209,7 +208,7 @@ class _SignupState extends State<Signup> {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
+                        SizedBox(
                           height: 60,
                           width: 340,
                           child: ElevatedButton(

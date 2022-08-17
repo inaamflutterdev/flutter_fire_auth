@@ -1,24 +1,25 @@
 import 'dart:async';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:flutter_firebase_auth/pages/login.dart';
 
-class welcome extends StatefulWidget {
-  welcome({Key? key}) : super(key: key);
+// ignore: camel_case_types
+class Welcome extends StatefulWidget {
+  const Welcome({Key? key}) : super(key: key);
 
   @override
-  State<welcome> createState() => _welcomeState();
+  State<Welcome> createState() => _WelcomeState();
 }
 
-class _welcomeState extends State<welcome> {
+class _WelcomeState extends State<Welcome> {
   @override
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 5),
-        () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => Login())));
+        const Duration(seconds: 5),
+        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => const Login())));
   }
 
   @override
@@ -33,7 +34,7 @@ class _welcomeState extends State<welcome> {
             Container(
               alignment: AlignmentDirectional.center,
               child: Column(children: [
-                Text(
+                const Text(
                   'Welcome to FlutterFire',
                   style: TextStyle(fontSize: 30),
                   textAlign: TextAlign.center,

@@ -55,32 +55,33 @@ class _LoginState extends State<Login> {
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
+      // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => UserMain(),
+          builder: (context) => const UserMain(),
         ),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print("No user found for that Email");
+        // print("No user found for that Email");
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: Colors.orange,
             content: Text(
               "No user found for that Email",
-              style: const TextStyle(fontSize: 18.0, color: Colors.black),
+              style: TextStyle(fontSize: 18.0, color: Colors.black),
             ),
           ),
         );
       } else if (e.code == 'wrong-password') {
-        print("Wrong password provided by User");
+        // print("Wrong password provided by User");
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: Colors.orange,
             content: Text(
               "Wrong password provided by User",
-              style: const TextStyle(fontSize: 18.0, color: Colors.black),
+              style: TextStyle(fontSize: 18.0, color: Colors.black),
             ),
           ),
         );
@@ -205,7 +206,7 @@ class _LoginState extends State<Login> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: ((context) => ForgetPassword())),
+                          builder: ((context) => const ForgetPassword())),
                     );
                   },
                   child: const Text(
@@ -223,7 +224,7 @@ class _LoginState extends State<Login> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       // padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                       height: 60,
                       width: 340,
@@ -258,7 +259,7 @@ class _LoginState extends State<Login> {
                     "Remember me",
                     style: TextStyle(
                       color: Color.fromARGB(255, 94, 92, 92),
-                      fontSize: 16.0,
+                      fontSize: 20.0,
                     ),
                   ),
                   Checkbox(
